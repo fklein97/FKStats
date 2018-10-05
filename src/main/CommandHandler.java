@@ -63,7 +63,7 @@ public class CommandHandler {
 
     private void printLastSeen(Player p, String statsplayer) {
         String lastseen = "Niemals";
-        ArrayList<Player> players = (ArrayList<Player>) plugin.getServer().getOnlinePlayers();
+        Collection<Player> players = (Collection<Player>) plugin.getServer().getOnlinePlayers();
         ArrayList<String> playernames = new ArrayList<String>();
         for(Player player : players){
             playernames.add(player.getDisplayName());
