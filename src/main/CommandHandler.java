@@ -6,6 +6,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Created by FKPro on 01.10.2018.
  */
@@ -50,9 +53,33 @@ public class CommandHandler {
                 if(args[0].equals("s") && p != null){
                     printStats(p, args[1]);
                 }
+                else if(args[0].equals("lastseen") && p != null){
+                    printLastSeen(p, args[1]);
+                }
             }
         }
 
+    }
+
+    private void printLastSeen(Player p, String statsplayer) {
+        String lastseen = "Niemals";
+        ArrayList<Player> players = (ArrayList<Player>) plugin.getServer().getOnlinePlayers();
+        ArrayList<String> playernames = new ArrayList<String>();
+        for(Player player : players){
+            playernames.add(player.getDisplayName());
+        }
+        if(playernames.contains(statsplayer)){
+            lastseen = "Der Spieler ist momentan online";
+        }
+        else{
+            if(plugin.getConfig().contains("stats." + statsplayer)) {
+                lastseen = plugin.getConfig().getString("stats."+ statsplayer + ".last_seen");
+            }
+        }
+
+        plugin.saveConfigChanges();
+        p.sendMessage(ChatColor.DARK_AQUA + FKSTATS + ChatColor.GRAY + statsplayer + " wurde zuletzt gesehen:");
+        p.sendMessage(ChatColor.GRAY + lastseen);
     }
 
     private void printhelp(Player player){

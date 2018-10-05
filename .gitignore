@@ -5,3 +5,11 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
+.idea/libraries/bukkit.xml
+FKStats.iml
+.idea/artifacts/FKStats.xml
+out/artifacts/FKStats/FKStats.jar
+out/production/FKStats/main/CommandHandler.class
+out/production/FKStats/main/FKStats.class
+out/production/FKStats/main/Listener.class
+out/production/FKStats/plugin.yml

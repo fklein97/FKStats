@@ -8,14 +8,20 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by FKPro on 21.09.2018.
  */
 public class Listener implements org.bukkit.event.Listener{
     private FKStats plugin;
+    private DateFormat df = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
 
     public Listener(FKStats plugin){
         this.plugin = plugin;
@@ -33,6 +39,8 @@ public class Listener implements org.bukkit.event.Listener{
     public void onPlayerJoin(PlayerJoinEvent event){
         Player p = event.getPlayer();
         p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.GRAY + " Tode: " + plugin.getConfig().getInt("stats." + p.getDisplayName() + ".deaths"));
+        Date now = new Date();
+        plugin.getConfig().set("stats." + p.getDisplayName() + ".last_seen", df.format(now));
     }
 
     @EventHandler
@@ -60,6 +68,15 @@ public class Listener implements org.bukkit.event.Listener{
         if(event.getPlayer() != null){
             Player p = event.getPlayer();
             plugin.getConfig().set("stats." + p.getDisplayName() + ".blocks_destroyed", plugin.getConfig().getInt("stats." + p.getDisplayName() + ".blocks_destroyed") + 1);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event){
+        if(event.getPlayer() != null){
+            Player p = event.getPlayer();
+            Date now = new Date();
+            plugin.getConfig().set("stats." + p.getDisplayName() + ".last_seen", df.format(now));
         }
     }
 }
