@@ -44,7 +44,7 @@ public class FKStats extends JavaPlugin{
 
     public void saveConfigChanges(){
         this.saveConfig();
-        this.reloadConfig();
+//        this.reloadConfig();
     }
 
 }
