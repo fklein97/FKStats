@@ -133,7 +133,7 @@ public class Listener implements org.bukkit.event.Listener{
         destroyed_meta.addEnchant(Enchantment.DURABILITY,1,true);
         destroyed_stack.setItemMeta(destroyed_meta);
 
-        Inventory gui = plugin.getServer().createInventory(null,4,"Stats von " + ip.getDisplayName());
+        Inventory gui = plugin.getServer().createInventory(null,9,"Stats von " + ip.getDisplayName());
         gui.setItem(0,deaths_stack);
         gui.setItem(1,kills_stack);
         gui.setItem(2,placed_stack);
