@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -45,6 +46,9 @@ public class CommandHandler {
                 else if(args[0].equals("s") && p != null) {
                     printStats(p);
                 }
+                else if(args[0].equals("ownstatsgui") && p != null) {
+                    ownStatsGUI(p);
+                }
                 else{
                     p.sendMessage(ChatColor.GRAY + USEFORHELP);
                 }
@@ -59,6 +63,12 @@ public class CommandHandler {
             }
         }
 
+    }
+
+    private void ownStatsGUI(Player p){
+        Listener l = new Listener(plugin);
+        Inventory gui = l.createStatsInventory(p);
+        p.openInventory(gui);
     }
 
     private void printLastSeen(Player p, String statsplayer) {

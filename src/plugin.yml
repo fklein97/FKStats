@@ -4,6 +4,7 @@ author: TheFK
 site: http://www.FKProjects.de
 
 main: main.FKStats
+api-version: 1.13
 
 commands:
   fkstats:
