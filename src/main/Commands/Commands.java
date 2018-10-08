@@ -1,7 +1,8 @@
 package main.Commands;
 
 import main.FKStats;
-import main.GUI.GUIManager;
+import main.GUI.ChoosePlayerGUI;
+import main.GUI.StatsGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -18,9 +19,8 @@ public class Commands {
     private final static String CMDDESCRIPTION_STATS = "/fkstats s - zeigt deine eigenen Stats";
     private final static String CMDDESCRIPTION_STATSP= "/fkstats s Spieler - zeigt die Stats eines Spielers an";
 
-    public static void ownStatsGUI(Player p, GUIManager gm){
-        Inventory gui = gm.createStatsGUI(p);
-        p.openInventory(gui);
+    public static void ownStatsGUI(Player p, FKStats plugin){
+        p.openInventory(new StatsGUI(plugin).create(p));
     }
 
     public static void printLastSeen(Player p, String statsplayer, FKStats plugin) {
@@ -62,5 +62,9 @@ public class Commands {
         player.sendMessage(ChatColor.GRAY + "Getötete Mobs: " + plugin.getConfig().getInt("stats."+ statsplayer + ".kills"));
         player.sendMessage(ChatColor.GRAY + "Zerstörte Blöcke: " + plugin.getConfig().getInt("stats."+ statsplayer + ".blocks_destroyed"));
         player.sendMessage(ChatColor.GRAY + "Platzierte Blöcke: " + plugin.getConfig().getInt("stats."+ statsplayer + ".blocks_placed"));
+    }
+
+    public static void startMenu(Player p, FKStats plugin) {
+        p.openInventory(new ChoosePlayerGUI(plugin).create(1));
     }
 }

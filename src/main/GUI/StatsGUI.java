@@ -11,15 +11,15 @@ import org.bukkit.plugin.Plugin;
 /**
  * Created by FKPro on 08.10.2018.
  */
-public class GUIManager {
+public class StatsGUI {
 
     private FKStats plugin;
 
-    public GUIManager(FKStats plugin){
+    public StatsGUI(FKStats plugin){
         this.plugin = plugin;
     }
 
-    public Inventory createStatsGUI(Player ip){
+    public Inventory create(Player ip){
         ItemStack deaths_stack;
         if(plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".deaths") > 0) {
             deaths_stack = new ItemStack(Material.SKELETON_SKULL, plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".deaths"));
@@ -46,7 +46,7 @@ public class GUIManager {
         destroyed_meta.setDisplayName("Zerstörte Blöcke: " + plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".blocks_destroyed"));
         destroyed_stack.setItemMeta(destroyed_meta);
 
-        Inventory gui = plugin.getServer().createInventory(null,9,"Stats von " + ip.getDisplayName());
+        Inventory gui = plugin.getServer().createInventory(null,9,"[FKStats]: Stats von " + ip.getDisplayName());
 
         gui.setItem(0,deaths_stack);
         gui.setItem(1,kills_stack);

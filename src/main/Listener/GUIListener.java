@@ -1,7 +1,7 @@
 package main.Listener;
 
 import main.FKStats;
-import main.GUI.GUIManager;
+import main.GUI.StatsGUI;
 import org.bukkit.event.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
@@ -10,18 +10,18 @@ import org.bukkit.event.inventory.InventoryClickEvent;
  */
 public class GUIListener implements org.bukkit.event.Listener{
     private FKStats plugin;
-    private GUIManager gm;
+    private StatsGUI gm;
 
     public GUIListener(FKStats plugin){
         this.plugin = plugin;
-        gm = new GUIManager(plugin);
+        gm = new StatsGUI(plugin);
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event){
-        if(event.getInventory().getTitle().startsWith("Stats")){
+        if(event.getInventory().getTitle().startsWith("[FKStats]")){
             event.setCancelled(true);
         }
     }

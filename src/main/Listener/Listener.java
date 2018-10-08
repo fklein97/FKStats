@@ -1,50 +1,35 @@
 package main.Listener;
 
 import main.FKStats;
-import main.GUI.GUIManager;
+import main.GUI.StatsGUI;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Created by FKPro on 21.09.2018.
  */
 public class Listener implements org.bukkit.event.Listener{
     private FKStats plugin;
-    private GUIManager gm;
 
     private DateFormat df = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
 
     public Listener(FKStats plugin){
         this.plugin = plugin;
-        gm = new GUIManager(plugin);
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
@@ -112,9 +97,7 @@ public class Listener implements org.bukkit.event.Listener{
             Player p = event.getPlayer();
             if(event.getRightClicked() != null && event.getRightClicked() instanceof Player){
                 Player ip = (Player) event.getRightClicked();
-                Inventory gui = gm.createStatsGUI(ip);
-
-                p.openInventory(gui);
+                p.openInventory(new StatsGUI(plugin).create(ip));
             }
         }
     }

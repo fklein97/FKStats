@@ -1,7 +1,7 @@
 package main.Listener;
 
 import main.FKStats;
-import main.GUI.GUIManager;
+import main.GUI.StatsGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Monster;
@@ -23,13 +23,13 @@ import java.util.Date;
  */
 public class LoggingListener implements org.bukkit.event.Listener {
     private FKStats plugin;
-    private GUIManager gm;
+    private StatsGUI gm;
 
     private DateFormat df = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
 
     public LoggingListener(FKStats plugin){
         this.plugin = plugin;
-        gm = new GUIManager(plugin);
+        gm = new StatsGUI(plugin);
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
