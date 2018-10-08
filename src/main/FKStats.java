@@ -1,23 +1,25 @@
 package main;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
+import main.Commands.CommandHandler;
+import main.Listener.GUIListener;
+import main.Listener.Listener;
+import main.Listener.LoggingListener;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by FKPro on 21.09.2018.
  */
 public class FKStats extends JavaPlugin{
     private Listener l;
+    private GUIListener guil;
+    private LoggingListener ll;
+
     private void registerListener() {
         l = new Listener(this);
+        guil = new GUIListener(this);
+        ll = new LoggingListener(this);
     }
 
     @Override
