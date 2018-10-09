@@ -32,7 +32,7 @@ public class ChoosePlayerGUI {
         }
         ArrayList<String> playernames = new ArrayList<>(Arrays.asList(playernames_array));
 
-        Inventory gui = plugin.getServer().createInventory(null,18,"[FKStats][Choose Player]: Wähle einen Spieler:");
+        Inventory gui = plugin.getServer().createInventory(null,18,"[FKStats][ChoosePlayerGUI]: Wähle einen Spieler: (Seite " + site + ")");
 
         for(int i = 0; i < 9; i++){
             if(i+(site-1)*9 >= playernames.size()){
@@ -47,6 +47,13 @@ public class ChoosePlayerGUI {
             gui.setItem(i, player_stack);
         }
 
+        ItemStack site_stack = new ItemStack(Material.GREEN_WOOL,1);
+        ItemMeta site_meta = site_stack.getItemMeta();
+        site_meta.setDisplayName(site + ". Seite");
+        site_stack.setItemMeta(site_meta);
+
+        gui.setItem(13, site_stack);
+
         if(site > 1){
             ItemStack back_stack = new ItemStack(Material.GREEN_BANNER,1);
             ItemMeta back_meta = back_stack.getItemMeta();
@@ -54,6 +61,15 @@ public class ChoosePlayerGUI {
             back_stack.setItemMeta(back_meta);
 
             gui.setItem(9, back_stack);
+        }
+
+        if(playernames.size() > site*9){
+            ItemStack next_stack = new ItemStack(Material.GREEN_BANNER,1);
+            ItemMeta next_meta = next_stack.getItemMeta();
+            next_meta.setDisplayName("Seite weiter");
+            next_stack.setItemMeta(next_meta);
+
+            gui.setItem(17, next_stack);
         }
 
         return gui;

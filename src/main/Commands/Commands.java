@@ -20,7 +20,7 @@ public class Commands {
     private final static String CMDDESCRIPTION_STATSP= "/fkstats s Spieler - zeigt die Stats eines Spielers an";
 
     public static void ownStatsGUI(Player p, FKStats plugin){
-        p.openInventory(new StatsGUI(plugin).create(p));
+        p.openInventory(new StatsGUI(plugin).create(p.getDisplayName()));
     }
 
     public static void printLastSeen(Player p, String statsplayer, FKStats plugin) {
@@ -39,7 +39,6 @@ public class Commands {
             }
         }
 
-        plugin.saveConfigChanges();
         p.sendMessage(ChatColor.DARK_AQUA + FKSTATS + ChatColor.GRAY + statsplayer + " wurde zuletzt gesehen:");
         p.sendMessage(ChatColor.GRAY + lastseen);
     }

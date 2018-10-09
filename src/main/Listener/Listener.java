@@ -97,7 +97,7 @@ public class Listener implements org.bukkit.event.Listener{
             Player p = event.getPlayer();
             if(event.getRightClicked() != null && event.getRightClicked() instanceof Player){
                 Player ip = (Player) event.getRightClicked();
-                p.openInventory(new StatsGUI(plugin).create(ip));
+                p.openInventory(new StatsGUI(plugin).create(ip.getDisplayName()));
             }
         }
     }

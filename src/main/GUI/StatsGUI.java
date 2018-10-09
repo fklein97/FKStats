@@ -19,34 +19,34 @@ public class StatsGUI {
         this.plugin = plugin;
     }
 
-    public Inventory create(Player ip){
+    public Inventory create(String playername){
         ItemStack deaths_stack;
-        if(plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".deaths") > 0) {
-            deaths_stack = new ItemStack(Material.SKELETON_SKULL, plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".deaths"));
+        if(plugin.getConfig().getInt("stats." + playername + ".deaths") > 0) {
+            deaths_stack = new ItemStack(Material.SKELETON_SKULL, plugin.getConfig().getInt("stats." + playername + ".deaths"));
         }
         else{
             deaths_stack = new ItemStack(Material.SKELETON_SKULL, 1);
         }
         ItemMeta deaths_meta = deaths_stack.getItemMeta();
-        deaths_meta.setDisplayName("Tode: " + plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".deaths"));
+        deaths_meta.setDisplayName("Tode: " + plugin.getConfig().getInt("stats." + playername + ".deaths"));
         deaths_stack.setItemMeta(deaths_meta);
 
-        ItemStack kills_stack = new ItemStack(Material.IRON_SWORD, plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".kills"));
+        ItemStack kills_stack = new ItemStack(Material.IRON_SWORD, plugin.getConfig().getInt("stats." + playername + ".kills"));
         ItemMeta kills_meta = kills_stack.getItemMeta();
-        kills_meta.setDisplayName("Getötete Monster: " + plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".kills"));
+        kills_meta.setDisplayName("Getötete Monster: " + plugin.getConfig().getInt("stats." + playername + ".kills"));
         kills_stack.setItemMeta(kills_meta);
 
-        ItemStack placed_stack = new ItemStack(Material.GRASS_BLOCK, plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".blocks_placed"));
+        ItemStack placed_stack = new ItemStack(Material.GRASS_BLOCK, plugin.getConfig().getInt("stats." + playername + ".blocks_placed"));
         ItemMeta placed_meta = placed_stack.getItemMeta();
-        placed_meta.setDisplayName("Platzierte Blöcke: " + plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".blocks_placed"));
+        placed_meta.setDisplayName("Platzierte Blöcke: " + plugin.getConfig().getInt("stats." + playername + ".blocks_placed"));
         placed_stack.setItemMeta(placed_meta);
 
-        ItemStack destroyed_stack = new ItemStack(Material.IRON_PICKAXE, plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".blocks_destroyed"));
+        ItemStack destroyed_stack = new ItemStack(Material.IRON_PICKAXE, plugin.getConfig().getInt("stats." + playername + ".blocks_destroyed"));
         ItemMeta destroyed_meta = destroyed_stack.getItemMeta();
-        destroyed_meta.setDisplayName("Zerstörte Blöcke: " + plugin.getConfig().getInt("stats." + ip.getDisplayName() + ".blocks_destroyed"));
+        destroyed_meta.setDisplayName("Zerstörte Blöcke: " + plugin.getConfig().getInt("stats." + playername + ".blocks_destroyed"));
         destroyed_stack.setItemMeta(destroyed_meta);
 
-        Inventory gui = plugin.getServer().createInventory(null,9,"[FKStats]: Stats von " + ip.getDisplayName());
+        Inventory gui = plugin.getServer().createInventory(null,9,"[FKStats][StatsGUI]: Stats von " + playername);
 
         gui.setItem(0,deaths_stack);
         gui.setItem(1,kills_stack);
