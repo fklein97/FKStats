@@ -50,11 +50,11 @@ public class PlayerInventoryGUI {
             for(int i = 0; i < 36; i++){
                 gui.setItem(i,p.getInventory().getItem(i));
             }
-            gui.setItem(100,p.getInventory().getItem(100));
-            gui.setItem(101,p.getInventory().getItem(101));
-            gui.setItem(102,p.getInventory().getItem(102));
-            gui.setItem(103,p.getInventory().getItem(103));
-            gui.setItem(-106,p.getInventory().getItem(-106));
+            //gui.setItem(100,p.getInventory().getItem(100));
+            //gui.setItem(101,p.getInventory().getItem(101));
+            //gui.setItem(102,p.getInventory().getItem(102));
+            //gui.setItem(103,p.getInventory().getItem(103));
+            //gui.setItem(-106,p.getInventory().getItem(-106));
         }
 
         return gui;

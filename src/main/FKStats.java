@@ -4,9 +4,12 @@ import main.Commands.CommandHandler;
 import main.Listener.GUIListener;
 import main.Listener.Listener;
 import main.Listener.LoggingListener;
+import main.Spectating.SpectatePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
 
 /**
  * Created by FKPro on 21.09.2018.
@@ -15,6 +18,8 @@ public class FKStats extends JavaPlugin{
     private Listener l;
     private GUIListener guil;
     private LoggingListener ll;
+
+    public ArrayList<SpectatePlayer> spectators = new ArrayList<SpectatePlayer>();
 
     private void registerListener() {
         l = new Listener(this);

@@ -1,5 +1,5 @@
 name: FKStats
-version: 1.1
+version: 1.2
 author: TheFK
 site: http://www.FKProjects.de
 
@@ -8,5 +8,5 @@ api-version: 1.13
 
 commands:
   fkstats:
-    description: main-command of this plugin (use "/fkstats h" for help)
+    description: main-command of this plugin (opens the main-menu) (use "/fkstats h" for help)
     usage: /<command> <args1> <args2>
