@@ -53,6 +53,12 @@ public class PlayerProfileGUI {
         stats_stack.setItemMeta(stats_meta);
         gui.setItem(0,stats_stack);
 
+        ItemStack inventory_stack = new ItemStack(Material.CHEST,1);
+        ItemMeta inventory_meta = inventory_stack.getItemMeta();
+        inventory_meta.setDisplayName("Zeige Inventar");
+        inventory_stack.setItemMeta(inventory_meta);
+        gui.setItem(1,inventory_stack);
+
         return gui;
     }
 

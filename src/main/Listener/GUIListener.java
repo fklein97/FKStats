@@ -2,6 +2,7 @@ package main.Listener;
 
 import main.FKStats;
 import main.GUI.ChoosePlayerGUI;
+import main.GUI.PlayerInventoryGUI;
 import main.GUI.PlayerProfileGUI;
 import main.GUI.StatsGUI;
 import org.bukkit.Material;
@@ -50,6 +51,9 @@ public class GUIListener implements org.bukkit.event.Listener{
                 String profileplayername = head_meta.getOwningPlayer().getName();
                 if(clickedItem != null && clickedItem.getType() == Material.IRON_PICKAXE){
                     p.openInventory(new StatsGUI(plugin).create(profileplayername));
+                }
+                else if(clickedItem != null && clickedItem.getType() == Material.CHEST){
+                    p.openInventory(new PlayerInventoryGUI(plugin).create(profileplayername));
                 }
             }
             event.setCancelled(true);
