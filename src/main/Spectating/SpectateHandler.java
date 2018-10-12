@@ -1,6 +1,7 @@
 package main.Spectating;
 
 import main.FKStats;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -22,6 +23,7 @@ public class SpectateHandler {
 
         player.setGameMode(GameMode.SPECTATOR);
         player.teleport(target);
+        player.sendMessage(ChatColor.DARK_AQUA + "[FKStats]" + ChatColor.RED + "Zum Verlassen des Zuschauermodus : '/fkstats exit' nutzen!");
     }
 
     public void stopSpectating(Player player){
@@ -40,6 +42,6 @@ public class SpectateHandler {
         }
         p.teleport(splayer.getLocation());
         p.setGameMode(GameMode.SURVIVAL);
-
+        plugin.spectators.remove(splayer);
     }
 }

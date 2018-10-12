@@ -59,6 +59,12 @@ public class PlayerProfileGUI {
         inventory_stack.setItemMeta(inventory_meta);
         gui.setItem(1,inventory_stack);
 
+        ItemStack spectate_stack = new ItemStack(Material.GLASS_PANE,1);
+        ItemMeta spectate_meta = spectate_stack.getItemMeta();
+        spectate_meta.setDisplayName("Zuschauen");
+        spectate_stack.setItemMeta(spectate_meta);
+        gui.setItem(2,spectate_stack);
+
         return gui;
     }
 

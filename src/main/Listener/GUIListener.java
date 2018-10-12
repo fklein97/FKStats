@@ -5,12 +5,16 @@ import main.GUI.ChoosePlayerGUI;
 import main.GUI.PlayerInventoryGUI;
 import main.GUI.PlayerProfileGUI;
 import main.GUI.StatsGUI;
+import main.Spectating.SpectateHandler;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by FKPro on 08.10.2018.
@@ -54,6 +58,19 @@ public class GUIListener implements org.bukkit.event.Listener{
                 }
                 else if(clickedItem != null && clickedItem.getType() == Material.CHEST){
                     p.openInventory(new PlayerInventoryGUI(plugin).create(profileplayername));
+                }
+                else if(clickedItem != null && clickedItem.getType() == Material.GLASS_PANE){
+                    Collection<Player> players = (Collection<Player>) plugin.getServer().getOnlinePlayers();
+                    Player target = null;
+                    for(Player player : players){
+                        if(player.getDisplayName().equals(profileplayername)){
+                            target = player;
+                            SpectateHandler sh = new SpectateHandler(plugin);
+                            sh.startSpectating(p,target);
+                            p.closeInventory();
+                            break;
+                        }
+                    }
                 }
             }
             event.setCancelled(true);

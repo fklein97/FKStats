@@ -4,6 +4,7 @@ import main.Commands.CommandHandler;
 import main.Listener.GUIListener;
 import main.Listener.Listener;
 import main.Listener.LoggingListener;
+import main.Listener.SpectateListener;
 import main.Spectating.SpectatePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -18,6 +19,7 @@ public class FKStats extends JavaPlugin{
     private Listener l;
     private GUIListener guil;
     private LoggingListener ll;
+    private SpectateListener sl;
 
     public ArrayList<SpectatePlayer> spectators = new ArrayList<SpectatePlayer>();
 
@@ -25,6 +27,7 @@ public class FKStats extends JavaPlugin{
         l = new Listener(this);
         guil = new GUIListener(this);
         ll = new LoggingListener(this);
+        sl = new SpectateListener(this);
     }
 
     @Override
