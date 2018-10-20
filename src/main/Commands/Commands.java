@@ -3,6 +3,7 @@ package main.Commands;
 import main.FKStats;
 import main.GUI.ChoosePlayerGUI;
 import main.GUI.StatsGUI;
+import main.Spectating.SpectateHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -65,5 +66,10 @@ public class Commands {
 
     public static void startMenu(Player p, FKStats plugin) {
         p.openInventory(new ChoosePlayerGUI(plugin).create(1));
+    }
+
+    public static void exitSpectating(Player p, FKStats plugin) {
+            SpectateHandler sh = new SpectateHandler(plugin);
+            sh.stopSpectating(p);
     }
 }

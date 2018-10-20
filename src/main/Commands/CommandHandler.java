@@ -45,6 +45,9 @@ public class CommandHandler {
                 else if(args[0].equals("ownstatsgui") && p != null) {
                     Commands.ownStatsGUI(p, plugin);
                 }
+                else if(args[0].equals("exit") && p != null) {
+                    Commands.exitSpectating(p, plugin);
+                }
                 else{
                     p.sendMessage(ChatColor.GRAY + USEFORHELP);
                 }

@@ -19,7 +19,6 @@ public class SpectateHandler {
     public void startSpectating(Player player, Player target){
         SpectatePlayer splayer = new SpectatePlayer(player, player.getInventory(), target, player.getLocation());
         plugin.spectators.add(splayer);
-        player.getInventory().clear();
 
         player.setGameMode(GameMode.SPECTATOR);
         player.teleport(target);
@@ -27,16 +26,20 @@ public class SpectateHandler {
     }
 
     public void stopSpectating(Player player){
+        SpectatePlayer spectator = null;
         for(SpectatePlayer sp : plugin.spectators){
             if(sp.getPlayer() == player){
-                stopSpectating(sp);
+                spectator = sp;
             }
+        }
+
+        if(spectator != null){
+            stopSpectating(spectator);
         }
     }
 
     public void stopSpectating(SpectatePlayer splayer){
         Player p = splayer.getPlayer();
-        p.getInventory().clear();
         for(int i = 0; i < 36; i++){
             p.getInventory().setItem(i, splayer.getInventory().getItem(i));
         }
