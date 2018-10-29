@@ -1,6 +1,7 @@
 package main.Listener;
 
 import main.FKStats;
+import main.GUI.PlayerProfileGUI;
 import main.GUI.StatsGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
@@ -97,7 +98,7 @@ public class Listener implements org.bukkit.event.Listener{
             Player p = event.getPlayer();
             if(event.getRightClicked() != null && event.getRightClicked() instanceof Player){
                 Player ip = (Player) event.getRightClicked();
-                p.openInventory(new StatsGUI(plugin).create(ip.getDisplayName()));
+                p.openInventory(new PlayerProfileGUI(plugin).create(ip.getDisplayName()));
             }
         }
     }

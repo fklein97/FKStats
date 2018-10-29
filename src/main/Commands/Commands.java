@@ -24,6 +24,7 @@ public class Commands {
         p.openInventory(new StatsGUI(plugin).create(p.getDisplayName()));
     }
 
+    //UNUSED
     public static void printLastSeen(Player p, String statsplayer, FKStats plugin) {
         String lastseen = "Niemals";
         Collection<Player> players = (Collection<Player>) plugin.getServer().getOnlinePlayers();
@@ -51,10 +52,12 @@ public class Commands {
         player.sendMessage(ChatColor.GRAY + CMDDESCRIPTION_STATSP);
     }
 
+    //UNUSED
     public static void printStats(Player player, FKStats plugin){
         printStats(player, player.getDisplayName(), plugin);
     }
 
+    //UNUSED
     public static void printStats(Player player, String statsplayer, FKStats plugin){
         plugin.saveConfigChanges();
         player.sendMessage(ChatColor.DARK_AQUA + FKSTATS + ChatColor.GRAY + "Hier sind die Stats von " + statsplayer + ":");

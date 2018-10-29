@@ -2,6 +2,7 @@ package main.Commands;
 
 import main.FKStats;
 import main.GUI.StatsGUI;
+import main.Spectating.SpectatePlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -32,18 +33,14 @@ public class CommandHandler {
         if(command.getName().equals("fkstats")){
             if (args.length == 0){
                 if(p != null){
-                    Commands.startMenu(p,plugin);
+                    if(isNoSpecator(p)) {
+                        Commands.startMenu(p, plugin);
+                    }
                 }
             }
             else if (args.length == 1){
                 if(args[0].equals("h") && p != null){
                     Commands.printhelp(p, plugin);
-                }
-                else if(args[0].equals("s") && p != null) {
-                    Commands.printStats(p, plugin);
-                }
-                else if(args[0].equals("ownstatsgui") && p != null) {
-                    Commands.ownStatsGUI(p, plugin);
                 }
                 else if(args[0].equals("exit") && p != null) {
                     Commands.exitSpectating(p, plugin);
@@ -52,17 +49,18 @@ public class CommandHandler {
                     p.sendMessage(ChatColor.GRAY + USEFORHELP);
                 }
             }
-            else if (args.length == 2){
-                if(args[0].equals("s") && p != null){
-                    Commands.printStats(p, args[1], plugin);
-                }
-                else if(args[0].equals("lastseen") && p != null){
-                    Commands.printLastSeen(p, args[1], plugin);
-                }
-            }
         }
 
     }
 
+    private boolean isNoSpecator(Player p){
+        for(SpectatePlayer sp : plugin.spectators){
+            if(sp.getPlayer() == p){
+                return false;
+            }
+        }
+
+        return true;
+    }
 
 }

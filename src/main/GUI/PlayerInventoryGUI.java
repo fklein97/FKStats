@@ -38,7 +38,7 @@ public class PlayerInventoryGUI {
         }
 
         if(p == null){
-            ItemStack offline_stack = new ItemStack(Material.RED_WOOL,1);
+            ItemStack offline_stack = new ItemStack(Material.BARRIER,1);
             ItemMeta offline_meta = offline_stack.getItemMeta();
             offline_meta.setDisplayName(playername + " ist Offline!");
             offline_stack.setItemMeta(offline_meta);
