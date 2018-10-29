@@ -29,6 +29,7 @@ public class PlayerProfileGUI {
 
         ItemStack lastseen_stack;
         String lastseen = getLastSeen(playername);
+
         if(lastseen.equals("Der Spieler ist momentan online")){
             lastseen_stack = new ItemStack(Material.GREEN_WOOL,1);
         }
@@ -83,6 +84,10 @@ public class PlayerProfileGUI {
             if(plugin.getConfig().contains("stats." + playername)) {
                 lastseen = plugin.getConfig().getString("stats."+ playername + ".last_seen");
             }
+        }
+
+        if(lastseen == null){
+            lastseen = "Noch nie";
         }
 
         return lastseen;
