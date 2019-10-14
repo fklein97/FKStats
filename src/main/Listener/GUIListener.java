@@ -32,7 +32,7 @@ public class GUIListener implements org.bukkit.event.Listener{
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event){
-        String title = event.getInventory().getTitle();
+        String title = event.getView().getTitle();
         if(title.startsWith("[FKStats]")){
             ItemStack clickedItem = event.getInventory().getItem(event.getSlot());
             Player p = (Player) event.getWhoClicked();

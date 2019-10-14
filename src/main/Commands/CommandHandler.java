@@ -45,8 +45,29 @@ public class CommandHandler {
                 else if(args[0].equals("exit") && p != null) {
                     Commands.exitSpectating(p, plugin);
                 }
+                else if(args[0].equals("statlogging") && p != null) {
+                    Commands.toggleStatLogging(p, plugin);
+                }
                 else{
                     p.sendMessage(ChatColor.GRAY + USEFORHELP);
+                }
+            }
+            else if (args.length == 2){
+                if(args[0].equals("location") && p != null) {
+                    if(args[1].equals("list")){
+                        Commands.listLocation(p,plugin);
+                    }
+                }
+            }
+            else if (args.length == 3){
+                if(args[0].equals("location") && p != null) {
+                    if(args[1].equals("add")){
+                        Commands.addLocation(args[2],p,plugin);
+                    }
+                    else if(args[1].equals("delete")){
+                        Commands.deleteLocation(args[2],p,plugin);
+
+                    }
                 }
             }
         }

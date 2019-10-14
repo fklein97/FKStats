@@ -1,10 +1,12 @@
 package main.Commands;
 
+import main.Classes.FKLocation;
 import main.FKStats;
 import main.GUI.ChoosePlayerGUI;
 import main.GUI.StatsGUI;
 import main.Spectating.SpectateHandler;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -74,5 +76,57 @@ public class Commands {
     public static void exitSpectating(Player p, FKStats plugin) {
             SpectateHandler sh = new SpectateHandler(plugin);
             sh.stopSpectating(p);
+    }
+
+    public static void toggleStatLogging(Player p, FKStats plugin) {
+        if(p.isOp()) {
+            if (plugin.stat_logging == true) {
+                plugin.stat_logging = false;
+                plugin.getConfig().set("config.stat_logging", false);
+                plugin.getServer().broadcastMessage(ChatColor.DARK_AQUA + FKSTATS + ChatColor.GRAY + "Stat Logging ist nun " + ChatColor.RED + "deaktiviert");
+            } else {
+                plugin.stat_logging = true;
+                plugin.getConfig().set("config.stat_logging", true);
+                plugin.getServer().broadcastMessage(ChatColor.DARK_AQUA + FKSTATS + ChatColor.GRAY + "Stat Logging ist nun " + ChatColor.GREEN + "aktiviert");
+            }
+        }
+    }
+
+    public static void listLocation(Player p, FKStats plugin) {
+        if(p.isOp()) {
+            p.sendMessage(ChatColor.DARK_AQUA + FKSTATS + ChatColor.GRAY + "Folgende Locations sind zurzeit eingetragen:");
+            for(FKLocation loc : plugin.locations){
+                p.sendMessage(ChatColor.GRAY + loc.name + "    (" + (int) loc.location.getX() + "/" + (int) loc.location.getY() + "/" + (int) loc.location.getZ() + ")");
+            }
+        }
+    }
+
+    public static void addLocation(String name, Player p, FKStats plugin) {
+        if(p.isOp()) {
+            plugin.getConfig().set("locations." + name + ".w",p.getLocation().getWorld().getName());
+            plugin.getConfig().set("locations." + name + ".x",p.getLocation().getX());
+            plugin.getConfig().set("locations." + name + ".y",p.getLocation().getY());
+            plugin.getConfig().set("locations." + name + ".z",p.getLocation().getZ());
+
+            FKLocation loc = new FKLocation(new Location(p.getLocation().getWorld(),p.getLocation().getX(),p.getLocation().getY(),p.getLocation().getZ()),name);
+            plugin.locations.add(loc);
+        }
+    }
+
+    public static void deleteLocation(String name, Player p, FKStats plugin) {
+        if(p.isOp()) {
+            plugin.getConfig().set("locations." + name, null);
+
+            int i = -1;
+            for(FKLocation loc : plugin.locations){
+                if(loc.name.equals(name)){
+                    i = plugin.locations.indexOf(loc);
+                }
+            }
+
+            if(i != -1){
+                plugin.locations.remove(i);
+            }
+        }
     }
 }
