@@ -49,7 +49,7 @@ public class Listener implements org.bukkit.event.Listener{
         }
     }
 
-    @EventHandler
+/*    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event){
         if(event.getPlayer() != null) {
             Player p = event.getPlayer();
@@ -64,7 +64,7 @@ public class Listener implements org.bukkit.event.Listener{
                 }
             }
         }
-    }
+    }*/
 
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event){

@@ -19,6 +19,7 @@ import java.util.Collection;
 public class Commands {
     private final static String FKSTATS = "[FKSTATS]: ";
     private final static String CMDDESCRIPTION_HELP = "/fkstats h - öffnet das hier";
+    private final static String CMDDESCRIPTION_GUI = "/fkstats - öffnet FKStats im GUI-Modus";
     private final static String CMDDESCRIPTION_STATS = "/fkstats s - zeigt deine eigenen Stats";
     private final static String CMDDESCRIPTION_STATSP= "/fkstats s Spieler - zeigt die Stats eines Spielers an";
 
@@ -50,6 +51,7 @@ public class Commands {
     public static void printhelp(Player player, FKStats plugin){
         player.sendMessage(ChatColor.DARK_AQUA + plugin.getDescription().getName() + " v." + plugin.getDescription().getVersion());
         player.sendMessage(ChatColor.GRAY + CMDDESCRIPTION_HELP);
+        player.sendMessage(ChatColor.GRAY + CMDDESCRIPTION_GUI);
         player.sendMessage(ChatColor.GRAY + CMDDESCRIPTION_STATS);
         player.sendMessage(ChatColor.GRAY + CMDDESCRIPTION_STATSP);
     }

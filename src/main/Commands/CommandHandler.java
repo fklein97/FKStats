@@ -48,6 +48,9 @@ public class CommandHandler {
                 else if(args[0].equals("statlogging") && p != null) {
                     Commands.toggleStatLogging(p, plugin);
                 }
+                else if(args[0].equals("s") && p != null) {
+                    Commands.printStats(p, plugin);
+                }
                 else{
                     p.sendMessage(ChatColor.GRAY + USEFORHELP);
                 }
@@ -57,6 +60,9 @@ public class CommandHandler {
                     if(args[1].equals("list")){
                         Commands.listLocation(p,plugin);
                     }
+                }
+                else if(args[0].equals("s") && p != null) {
+                    Commands.printStats(p, args[1], plugin);
                 }
             }
             else if (args.length == 3){

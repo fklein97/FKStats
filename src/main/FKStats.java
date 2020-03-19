@@ -87,11 +87,13 @@ public class FKStats extends JavaPlugin{
     }
 
     public void refreshPlayerinList(Player p) {
+        int deathcount = this.getConfig().getInt("stats." + p.getDisplayName() + ".deaths");
+
         if(p.getWorld().getEnvironment() == World.Environment.NETHER) {
-            p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.RED + " [Im Nether]");
+            p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.RED + " [Im Nether] " + ChatColor.GOLD + "[Tode: " + deathcount + "]");
         }
         else if(p.getWorld().getEnvironment() == World.Environment.THE_END) {
-            p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.YELLOW + " [Im End]");
+            p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.YELLOW + " [Im End] " + ChatColor.GOLD + "[Tode: " + deathcount + "]");
         }
         else{
             double distance = -1;
@@ -103,10 +105,10 @@ public class FKStats extends JavaPlugin{
                 }
             }
             if(closest != null) {
-                p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.GREEN + " [" + closest.name + "]");
+                p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.GREEN + " [" + closest.name + "] " + ChatColor.GOLD + "[Tode: " + deathcount + "]");
             }
             else{
-                p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.GREEN + " [In der Oberwelt]");
+                p.setPlayerListName(ChatColor.DARK_AQUA + p.getDisplayName() + ChatColor.GREEN + " [In der Oberwelt] " + ChatColor.GOLD + "[Tode: " + deathcount + "]");
             }
         }
     }
