@@ -46,7 +46,7 @@ public class StatsGUI {
         destroyed_meta.setDisplayName("Zerstörte Blöcke: " + plugin.getConfig().getInt("stats." + playername + ".blocks_destroyed"));
         destroyed_stack.setItemMeta(destroyed_meta);
 
-        Inventory gui = plugin.getServer().createInventory(null,9,"Stats von " + playername + "[FKStats]");
+        Inventory gui = plugin.getServer().createInventory(null,9,"[FKStats][StatsGUI] Stats von " + playername);
 
         gui.setItem(0,deaths_stack);
         gui.setItem(1,kills_stack);
