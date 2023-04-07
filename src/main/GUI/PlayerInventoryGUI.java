@@ -24,7 +24,7 @@ public class PlayerInventoryGUI {
     }
 
     public Inventory create(String playername){
-        Inventory gui = plugin.getServer().createInventory(null, InventoryType.PLAYER,"[FKStats][PlayerInventoryGUI]: Inventar von " + playername);
+        Inventory gui = plugin.getServer().createInventory(null, InventoryType.PLAYER,"Inventar von " + playername + " [FKStats]");
 
         Collection<Player> players = (Collection<Player>) plugin.getServer().getOnlinePlayers();
         ArrayList<String> playernames = new ArrayList<String>();

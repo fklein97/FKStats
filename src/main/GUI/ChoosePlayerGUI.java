@@ -32,7 +32,7 @@ public class ChoosePlayerGUI {
         }
         ArrayList<String> playernames = new ArrayList<>(Arrays.asList(playernames_array));
 
-        Inventory gui = plugin.getServer().createInventory(null,18,"[FKStats][ChoosePlayerGUI]: Wähle einen Spieler: (Seite " + site + ")");
+        Inventory gui = plugin.getServer().createInventory(null,18,"Wähle einen Spieler: (Seite " + site + ") [FKStats]");
 
         for(int i = 0; i < 9; i++){
             if(i+(site-1)*9 >= playernames.size()){

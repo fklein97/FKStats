@@ -8,6 +8,7 @@ import main.Listener.Listener;
 import main.Listener.LoggingListener;
 import main.Listener.SpectateListener;
 import main.Spectating.SpectatePlayer;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;

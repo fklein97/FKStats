@@ -25,7 +25,7 @@ public class PlayerProfileGUI {
     }
 
     public Inventory create(String playername){
-        Inventory gui = plugin.getServer().createInventory(null,9,"[FKStats][PlayerProfileGUI]: Profil von " + playername);
+        Inventory gui = plugin.getServer().createInventory(null,9,"Profil von " + playername + "[FKStats]");
 
         ItemStack lastseen_stack;
         String lastseen = getLastSeen(playername);
